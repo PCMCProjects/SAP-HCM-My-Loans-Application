@@ -1,0 +1,88 @@
+<mvc:View controllerName="com.demoB62Demo.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:ux="sap.uxap">
+	<Page title="I am First View">
+		<content>
+			<Panel headerText="Search Products">
+				<HBox class="sapUiSmallMargin">
+					<VBox>
+						<Label text="Product Id"></Label>
+						<Input id="idIpPrdId"></Input>
+					</VBox>
+					<VBox class="sapUiSmallMarginBegin">
+						<Label text="Product Name"></Label>
+						<Input id="idIpPrdName"></Input>
+					</VBox>
+					<VBox class="sapUiSmallMarginBegin">
+						<Label text="Product Status"></Label>
+						<Input id="idIpStatus"></Input>
+					</VBox>
+				</HBox>
+				<FlexBox justifyContent="End">
+					<Button text="Go" icon="sap-icon://accept" type="Accept" press="onGo"></Button>
+					<Button text="Reset" icon="sap-icon://reset" type="Reject" press="onReset"></Button>
+				</FlexBox>
+			</Panel>
+			<Table id="idTab" items="{/ProductSet}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Product List"></Title>
+						<ToolbarSpacer></ToolbarSpacer>
+						<ComboBox id="idCBSort">
+							<items>
+								<core:Item text="Prdid"></core:Item>
+								<core:Item text="Prdname"></core:Item>
+								<core:Item text="Prddesc"></core:Item>
+								<core:Item text="Prdprice"></core:Item>
+								<core:Item text="Currcode"></core:Item>
+								<core:Item text="Status"></core:Item>
+							</items>
+						</ComboBox>
+						<Button icon="sap-icon://sort-ascending" press="onToggleSort"></Button>
+						<Button icon="sap-icon://sort-descending" press="onToggleSort"></Button>
+						<Button icon="sap-icon://excel-attachment" press="onExportToXL"></Button>
+						<Button icon="sap-icon://pdf-attachment" press="onExportToPDF"></Button>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="Product ID"></Text>
+					</Column>
+					<Column>
+						<Text text="Product Name"></Text>
+					</Column>
+					<Column>
+						<Text text="Product Description"></Text>
+					</Column>
+					<Column>
+						<Text text="Product price"></Text>
+					</Column>
+					<Column>
+						<Text text="Currency Code"></Text>
+					</Column>
+					<Column>
+						<Text text="Status"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active" press="onPressRow">
+						<cells>
+							<Text text="{Prdid}"></Text>
+							<Text text="{Prdname}"></Text>
+							<Text text="{Prddesc}"></Text>
+							<Text text="{Prdprice}"></Text>
+							<Text text="{Currcode}"></Text>
+							<ObjectStatus text="{Status}" state="{path:'Status',formatter:'.f.colorStatus'}"></ObjectStatus>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Submit" press="onSubmit" type="Emphasized"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

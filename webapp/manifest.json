@@ -1,0 +1,150 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "com.demoB62Demo",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZBATCH62_ODATA_SRV": {
+				"uri": "/sap/opu/odata/sap/ZBATCH62_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.demoB62Demo.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.demoB62Demo.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZBATCH62_ODATA_SRV",
+				"preload": true
+			},
+			"prdModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.demoB62Demo.view",
+				"controlAggregation": "pages",
+				"controlId": "idViewContainer",
+				"clearControlAggregation": false,
+				"async": true
+			},
+			"routes": [{
+				"name": "view1route",
+				"pattern": "",
+				"target": [
+					"TargetView1"
+				]
+			}, {
+				"name": "view2route",
+				"pattern": "secondview",
+				"target": [
+					"TargetView2"
+				]
+			}, {
+				"name": "view3route",
+				"pattern": "thirdview",
+				"target": [
+					"TargetView3"
+				]
+			}],
+			"targets": {
+				"TargetView1": {
+					"viewId": "idView1",
+					"viewName": "View1",
+					"viewLevel": 1
+				},
+				"TargetView2": {
+					"viewId": "idView2",
+					"viewName": "View2",
+					"viewLevel": 2
+				},
+				"TargetView3": {
+					"viewId": "idView3",
+					"viewName": "View3",
+					"viewLevel": 3
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}],
+			"js": [{
+				"uri": "libs/jspdf.debug.js"
+			}, {
+				"uri": "libs/jspdf.plugin.autotable.js"
+			}, {
+				"uri": "libs/filesaver.js"
+			}]
+		}
+	}
+}
